@@ -62,7 +62,6 @@ Vue.use(VueRouter)
     name: '分销管理',
     component: Layout,
     hidden: false,
-    icon: 'customer-service',
     children: [
       {
         path: '/about',
