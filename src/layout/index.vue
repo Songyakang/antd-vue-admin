@@ -56,7 +56,6 @@ export default {
   computed: {
     routesfmt() {
       let route = this.$router.options.routes.map(e => {
-        console.log(e)
         let data = {
           icon: '', 
           ...e
@@ -71,7 +70,6 @@ export default {
         }
         return data
       }).filter(e => !e.hidden)
-      console.log(route)
       return route
     },
     avatar() {
@@ -91,7 +89,10 @@ export default {
   },
   methods: {
     cancellation(){
-      localStorage
+      this.$store.dispatch('user/logout').then(() => {
+        console.log(this.$store.state.user)
+        this.$router.push({path: '/login'})
+      })
     }
   }
 }

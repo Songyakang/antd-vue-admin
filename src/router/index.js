@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/login',
+    name: 'login',
     component: Home,
     icon: 'account-book',
     hidden: true
