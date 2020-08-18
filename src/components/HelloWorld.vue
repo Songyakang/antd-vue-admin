@@ -50,7 +50,6 @@ export default {
     msg: String
   },
   created(){
-    console.log(this.$store.state.user)
     this.form.remember = this.$store.state.user.remember
     if(this.$store.state.user.remember){
       this.form.name = this.$store.state.user.name

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Layout from '@/layout'
 Vue.use(VueRouter)
 
@@ -8,7 +7,7 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'login',
-    component: Home,
+    component: () => import('../views/login/login.vue'),
     icon: 'account-book',
     hidden: true
   },

@@ -44,7 +44,6 @@ const actions = {
   },
   logout({commit}){
     return new Promise((resolve) => {
-      console.log(state.remember)
       if(!state.remember){
         localStorage.userInfo = '{}'
         commit('INIT_DATA')
