@@ -1,6 +1,7 @@
 <template>
   <div class="goodsDetail">
     商品详情
+    <editor/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ export default {
   created(){
   },
   components:{
+    editor: () => import('@/components/editor')
   },
   filters:{
   },
