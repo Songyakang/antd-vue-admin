@@ -64,19 +64,27 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .hello{
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.panel{
-  width: 350px;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px #e2e2e2, 0px 0px 10px #e2e2e2 inset;
+  background: url('../../assets/loginbackground.jpg');
+  background-size: 100% 100%;
+  min-width: 900px;
+  position: relative;
+  .panel{
+    width: 350px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #e2e2e2, 0px 0px 10px #e2e2e2 inset;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    bottom: 10vh;
+    right: 10vh;
+  }
 }
 </style>

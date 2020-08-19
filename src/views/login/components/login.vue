@@ -1,26 +1,24 @@
 <template>
-  <div>
-    <div>
-      <span>账号: </span>
+  <div class="login-panel">
+    <div class="form-item">
+      <span class="label">账号: </span>
       <input v-model='form.name'/>
     </div>
-    <div>
-      <span>密码: </span>
+    <div class="form-item">
+      <span class="label">密码: </span>
       <input v-model='form.password'/>
     </div>
-    <div>
-      <div></div>
+    <div class="tabbar">
       <div @click='$emit("change", {type: 3})'>忘记密码</div>
+      <div @click='$emit("change", {type: 2})'>注册账号</div>
     </div>
+    <div class='login-btn' @click.stop='login'>立即登录</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'login',
-  props: {
-    msg: String
-  },
   created(){
     this.form.remember = this.$store.state.user.remember
     if(this.$store.state.user.remember){
@@ -38,8 +36,8 @@ export default {
     }
   },
   methods: {
-    handleSubmit(){
-      this.$store.dispatch('user/login',{
+    login(){
+      this.$store.dispatch('user/userlogin',{
         ...this.form
       }).then(() => {
         this.$router.push({path: '/about'})
@@ -50,12 +48,53 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.login-form{
-  width: 350px;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px #f2f2f2;
+<style lang='scss' scoped>
+$color: rgba(255, 255, 255, 0.2);
+$fontcolor: #e2e2e2;
+.login-panel{
+  .form-item{
+    border-bottom: 1px solid $color;
+    padding: 5px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .label{
+      min-width: 50px;
+      color: $fontcolor;
+    }
+    input{
+      border-width: 0;
+      outline-width: 0;
+      font-size: 16px;
+      flex: 1;
+      margin-left: 5px;
+      background-color: inherit;
+      color: $fontcolor;
+    }
+  }
+  .tabbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    div{
+      color: $fontcolor;
+    }
+    div{
+      cursor: pointer;
+    }
+  }
+  .login-btn{
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    background: $color;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    color: $fontcolor;
+  }
 }
 </style>

@@ -7,16 +7,22 @@
         <div v-show='!collapsed'>{{name}}</div>
       </div>
       <a-menu  theme="dark" style='height: calc(100vh - 64px);' mode="inline">
-        <a-sub-menu v-for='(item) in routesfmt' :key="item.name">
-          <div class='menu-item' slot="title">
+        <template v-for='(item) in routesfmt'>
+          <a-sub-menu v-if='item.children.length > 0' :key="item.name">
+            <div class='menu-item' slot="title">
+              <a-icon v-if='item.icon' :type="item.icon" />
+              <span v-show='!collapsed'>{{item.name}}</span>
+            </div>
+            <a-menu-item @click='go(chitem)' v-for='(chitem) in item.children' :key="chitem.name">
+              <a-icon v-if='chitem.icon' :type="chitem.icon" />
+              <span>{{chitem.name}}</span>
+            </a-menu-item>
+          </a-sub-menu>
+          <a-menu-item v-else @click='go(item)' :key="item.name">
             <a-icon v-if='item.icon' :type="item.icon" />
-            <span v-show='!collapsed'>{{item.name}}</span>
-          </div>
-          <a-menu-item v-for='(chitem) in item.children' :key="chitem.name">
-            <a-icon v-show='chitem.icon' :type="chitem.icon" />
-            <span>{{chitem.name}}</span>
+            <span>{{item.name}}</span>
           </a-menu-item>
-        </a-sub-menu>
+        </template>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -38,7 +44,7 @@
       <a-layout-content
         style='max-height: calc(100vh - 64px); overflow-y: scroll;'
       >
-        <div class="content">
+        <div class="content"> 
           <app-main />
         </div>
       </a-layout-content>
@@ -70,6 +76,7 @@ export default {
         }
         return data
       }).filter(e => !e.hidden)
+      console.log(route)
       return route
     },
     avatar() {
@@ -85,14 +92,20 @@ export default {
     }
   },
   created(){
-    console.log(this.$store.state)
   },
   methods: {
     cancellation(){
       this.$store.dispatch('user/logout').then(() => {
-        console.log(this.$store.state.user)
         this.$router.push({path: '/login'})
       })
+    },
+    /**
+     * 路由跳转
+     * @date 2020/8/19
+     * @author 咸鱼康宝宝
+     */
+    go(e){
+      this.$router.push({path: e.path})
     }
   }
 }
