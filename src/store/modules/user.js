@@ -1,4 +1,4 @@
-console.log(localStorage)
+import {login} from '@/api/user'
 const state = {
   token: localStorage.getItem('userInfo') ? JSON.parse(localStorage.userInfo).token : '',
   name: localStorage.getItem('userInfo') ? JSON.parse(localStorage.userInfo).name : '',
@@ -34,17 +34,25 @@ const mutations = {
   }
 }
 const actions = {
-  login({commit}, userInfo){
-    console.log(state.userInfo)
+  //用户登录
+  userlogin({commit}, userInfo){
     return new Promise((resolve) => {
-      localStorage.userInfo = JSON.stringify(userInfo)
-      commit('SET_DATA', userInfo)
-      resolve('11111111111')
+      login(userInfo).then(res => {
+        userInfo = {
+          ...userInfo,
+          name: res.name,
+          token: res.data,
+          remember: true
+        }
+        localStorage.userInfo = JSON.stringify(userInfo)
+        commit('SET_DATA', userInfo)
+        resolve(res)
+      })
     })
   },
+  //注销
   logout({commit}){
     return new Promise((resolve) => {
-      console.log(state.remember)
       if(!state.remember){
         localStorage.userInfo = '{}'
         commit('INIT_DATA')

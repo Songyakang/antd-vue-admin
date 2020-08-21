@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Layout from '@/layout'
 Vue.use(VueRouter)
 
@@ -8,7 +7,7 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'login',
-    component: Home,
+    component: () => import('../views/login/login.vue'),
     icon: 'account-book',
     hidden: true
   },
@@ -28,45 +27,24 @@ Vue.use(VueRouter)
     ]
   },
   {
-    path: '/about',
+    path: '/goodsList',
     name: '商品管理',
     component: Layout,
     hidden: false,
     icon: 'customer-service',
     children: [
       {
-        path: '/about',
-        name: '关于1',
+        path: '/goodsList',
+        name: '商品列表',
         icon: 'customer-service',
-        component: () => import('../views/About.vue')
-      }
-    ]
-  },
-  {
-    path: '/about',
-    name: '用户管理',
-    component: Layout,
-    hidden: false,
-    icon: 'customer-service',
-    children: [
+        component: () => import('../views/goods/list/list.vue')
+      },
       {
-        path: '/about',
-        name: '关于2',
+        path: '/goodsDetail',
+        name: '商品列表',
+        hidden: true,
         icon: 'customer-service',
-        component: () => import('../views/About.vue')
-      }
-    ]
-  },
-  {
-    path: '/about',
-    name: '分销管理',
-    component: Layout,
-    hidden: false,
-    children: [
-      {
-        path: '/about',
-        name: '关于3',
-        component: () => import('../views/About.vue')
+        component: () => import('../views/goods/detail/detail.vue')
       }
     ]
   }
