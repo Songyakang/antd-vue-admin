@@ -1,6 +1,8 @@
 <template>
   <div class="goodsList">
     <a-button @click='$router.push({path: "/goodsDetail"})'>商品列表</a-button>
+    1
+    <threejs/>
   </div>
 </template>
 
@@ -10,6 +12,7 @@ export default {
   created(){
   },
   components:{
+    threejs: () => import('@/components/three.vue')
   },
   filters:{
   },

@@ -1,16 +1,19 @@
 <template>
   <div class="forgot-password-panel">
     <div class="form-item">
-      <span class="label">账号: </span>
-      <input v-model='form.name'/>
+      <a-input size='large' v-model="form.name" placeholder="请输入登陆账号">
+        <a-icon slot="prefix" type="user" />
+      </a-input>
     </div>
     <div class="form-item">
-      <span class="label">密码: </span>
-      <input v-model='form.password'/>
+      <a-input size='large' v-model="form.password" placeholder="请输入登陆密码">
+        <a-icon slot="prefix" type="unlock" />
+      </a-input>
     </div>
     <div class="form-item">
-      <span class="label">确认密码: </span>
-      <input v-model='form.password'/>
+      <a-input size='large' v-model="form.password" placeholder="请再次输入登陆密码">
+        <a-icon slot="prefix" type="unlock" />
+      </a-input>
     </div>
     <div class="tabbar">
       <div @click='$emit("change", {type: 3})'></div>

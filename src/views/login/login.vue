@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class='panel'>
-      <div>
+      <div class="title">
         {{type | titlefmt}}
       </div>
       <div v-if='type == 1'>
@@ -71,20 +71,34 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../../assets/loginbackground.jpg');
+  background-color: rgba(0,0,0,0.8);
   background-size: 100% 100%;
   min-width: 900px;
   position: relative;
-  .panel{
-    width: 350px;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #e2e2e2, 0px 0px 10px #e2e2e2 inset;
-    background-color: rgba(255, 255, 255, 0.1);
+  &::after{
+    background: url('../../assets/loginbackground.jpg');
     position: absolute;
-    bottom: 10vh;
-    right: 10vh;
+    content: '';
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+  .panel{
+    width: 375px;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #e2e2e2, 0px 0px 10px #e2e2e2 inset;
+    background-color: #ffffff;
+    .title{
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 25px;
+    }
   }
 }
 </style>

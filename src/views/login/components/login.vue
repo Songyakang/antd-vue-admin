@@ -1,18 +1,21 @@
 <template>
   <div class="login-panel">
     <div class="form-item">
-      <span class="label">账号: </span>
-      <input v-model='form.name'/>
+      <a-input size='large' v-model="form.name" placeholder="请输入登陆账号">
+        <a-icon slot="prefix" type="user" />
+      </a-input>
     </div>
     <div class="form-item">
-      <span class="label">密码: </span>
-      <input v-model='form.password'/>
+      <a-input size='large' v-model="form.password" placeholder="请输入登录密码">
+        <a-icon slot="prefix" type="unlock" />
+      </a-input>
     </div>
+    <a-button size='large' class='login-btn' @click.stop='login'>立即登录</a-button>
     <div class="tabbar">
       <div @click='$emit("change", {type: 3})'>忘记密码</div>
       <div @click='$emit("change", {type: 2})'>注册账号</div>
     </div>
-    <div class='login-btn' @click.stop='login'>立即登录</div>
+    
   </div>
 </template>
 
@@ -50,26 +53,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
 $color: rgba(255, 255, 255, 0.2);
-$fontcolor: #e2e2e2;
+$fontcolor: #555;
 .login-panel{
   .form-item{
     border-bottom: 1px solid $color;
     padding: 5px 0;
-    font-size: 16px;
+    font-size: 14px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     .label{
       min-width: 50px;
-      color: $fontcolor;
-    }
-    input{
-      border-width: 0;
-      outline-width: 0;
-      font-size: 16px;
-      flex: 1;
-      margin-left: 5px;
-      background-color: inherit;
       color: $fontcolor;
     }
   }
@@ -90,11 +84,11 @@ $fontcolor: #e2e2e2;
     padding: 5px;
     box-sizing: border-box;
     background: $color;
-    border-radius: 50px;
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
     color: $fontcolor;
+    font-size: 14px;
   }
 }
 </style>
