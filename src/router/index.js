@@ -25,8 +25,22 @@ Vue.use(VueRouter)
         component: () => import('../views/About.vue')
       }
     ]
-  },
-  {
+  },{
+    path: '/design',
+    name: '拖拽生成页面',
+    component: Layout,
+    hidden: false,
+    icon: 'customer-service',
+    children: [
+      {
+        path: '/design',
+        name: '关于',
+        hidden: true,
+        icon: 'customer-service',
+        component: () => import('../views/design')
+      }
+    ]
+  },{
     path: '/goodsList',
     name: '商品管理',
     component: Layout,
