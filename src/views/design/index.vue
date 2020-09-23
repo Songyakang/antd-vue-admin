@@ -5,7 +5,13 @@
     </div>
     
     <div>
-      <component-view :willData='willData' @preview='preview' @pushlast='pushlast' :list='data' @changeindex='changeindex'/>
+      <component-view 
+        @changebind='changebind' 
+        :willData='willData' 
+        @preview='preview' 
+        @pushlast='pushlast' 
+        :list='data' 
+        @changeindex='changeindex'/>
     </div>
     <div class="right">
       <a-button @click='data = []'>清空</a-button>
@@ -58,26 +64,39 @@ export default {
       this.willIndex = e.index
       this.type = 2
     },
+    changebind(){
+      this.data = this.data.map(e => {
+        delete e.will
+        return e
+      })
+    },
     /**
      * 视图区域移动渲染
      * @param {number} e 指定下标
      */
     preview(e){
-      this.data = this.data.filter(e => !e.will)
-      if(e == this.data.length){
-        this.data.push(this.willData)
-      }else{
-        this.data.splice(e, 0, this.willData)
-      }
-      this.willIndex = e
+      this.data = this.data.filter(o => !o.will)
+      console.log(e, this.data.length)
+        if(e >= this.data.length){
+          this.data.push(this.willData)
+          console.log('tianjia')
+        }else{
+          this.data.splice(e, 0, this.willData)
+          console.log('替换')
+        }
+        this.willIndex = e
     },
     /**
      * 视图区域移动数据
      * @param {number} e 指定下标
      */
     pushlast(e){
-      console.log('下标', this.willIndex, e, this.willData)
-      delete this.data[this.willIndex].will
+      try{
+        delete this.data[this.willIndex].will
+      }catch(err){
+        console.log('下标', this.willIndex, e, this.data)
+      }
+      
       //初始化参数
       this.willIndex = -1
       this.willData = {}

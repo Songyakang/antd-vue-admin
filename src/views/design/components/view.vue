@@ -1,9 +1,14 @@
 <template>
   <div @drop='yes' data-target='father' @dragover="oky" class="componentView">
     <div class="scroll-item" data-target='father'>
-      {{fmtlist}}
       <div v-for='(item, index) in list' :key='index' class="group">
-        <div :class='item.will ? "opactiy":""' :data-target='index' @dragstart='oho(index)' draggable class="div">{{item.title}}</div>
+        <div 
+          @click="$emit('changebind', index)" 
+          :class='item.will ? "opactiy":""' 
+          :data-target='index' 
+          @dragstart='oho(index)' 
+          draggable 
+          class="div">{{item.title}}</div>
       </div>
     </div>
   </div>
@@ -13,9 +18,6 @@
 export default {
   name: 'componentView',
   computed: {
-    fmtlist(){
-      return this.willData
-    }
   },
   watch:{
     preindex(val){

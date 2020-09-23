@@ -41,24 +41,17 @@ Vue.use(VueRouter)
       }
     ]
   },{
-    path: '/goodsList',
-    name: '商品管理',
+    path: '/nine',
+    name: '特殊',
     component: Layout,
     hidden: false,
     icon: 'customer-service',
     children: [
       {
-        path: '/goodsList',
-        name: '商品列表',
+        path: '/nine',
+        name: '九宫格动画',
         icon: 'customer-service',
-        component: () => import('../views/goods/list/list.vue')
-      },
-      {
-        path: '/goodsDetail',
-        name: '商品列表',
-        hidden: true,
-        icon: 'customer-service',
-        component: () => import('../views/goods/detail/detail.vue')
+        component: () => import('../views/nine/nine.vue')
       }
     ]
   }
