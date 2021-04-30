@@ -4,13 +4,25 @@
   </div>
 </template>
 <script>
+import { registerMicroApps, start } from "qiankun";
 export default {
-  name: 'app',
-  data () {
-    return {
-    }
-  }
-}
+  name: "app",
+  data() {
+    return {};
+  },
+  created() {
+    registerMicroApps([
+      {
+        name: "vue app", // app name registered
+        entry: "//localhost:8080",
+        container: "#vue",
+        activeRule: "/vue",
+      }
+    ]);
+    console.log(registerMicroApps);
+    start();
+  },
+};
 </script>
 <style>
 #app {
