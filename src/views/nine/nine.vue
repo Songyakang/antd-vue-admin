@@ -12,7 +12,7 @@
       </a-form-item>
       <a-button @click.stop='endd'>stop</a-button>
     </a-form-model>
-    <div class="luckdraw">
+    <div class="luckdraw border">
       <div class="panel">
         <template v-for='item in 9'>
           <div v-if='item != 5' :key='item' :class='item == bindindex ? "bind":""' class="panel-item">{{item}}</div>
@@ -58,6 +58,7 @@ export default {
     endd(){
       clearTimeout(this.timeOut)
       this.timeOut = null
+      this.flag = true
     },
     async letsgo(){
       if(this.flag){
@@ -86,7 +87,7 @@ $height: 530px;
   padding: 15px;
   border-radius: 10px;
   position: relative;
-  .fa{
+  .panel{
     background: red;
     border-radius: 10px;
     padding: 10px;
@@ -97,7 +98,7 @@ $height: 530px;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10px;
     row-gap: 10px;
-    div{
+    .panel-item{
       height: calc((500px - 20px) / 3);
       background: pink;
       justify-content: center;

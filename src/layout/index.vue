@@ -2,7 +2,7 @@
   <div id="app">
     <a-layout id="components-layout-demo-custom-trigger">
       <a-layout-sider collapsible :trigger="null" v-model="collapsed">
-        <div style="width: 200px; overflow: hidden;">
+        <div style="width: auto; overflow: hidden;">
           <div class="logo">
             <img />
             <div v-show="!collapsed"></div>
@@ -96,6 +96,7 @@ export default {
   },
   computed: {
     routesfmt() {
+      console.log(this.$store.state)
       let route = this.$store.state.router.router.map((e) => {
         let data = {
           icon: "",
@@ -233,10 +234,10 @@ export default {
   align-items: center;
 }
 .ant-menu-submenu{
-  width: 200px;
+  width: 100%;
 }
 .ant-menu{
-  width: 220px;
+  width: calc(100% + 20px);
   padding-right: 20px;
   overflow-y: auto;
   overflow-x: hidden;

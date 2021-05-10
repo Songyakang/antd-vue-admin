@@ -1,6 +1,6 @@
 <template>
   <div class="componentList">
-    <div v-for='(item, index) in listfmt' :key='index' class="group">
+    <div v-for='(item, index) in list' :key='index' class="group">
       <div class="group-title">
         <span>{{item.title}}</span>
         <a-icon v-show='item.show' type="up" />
@@ -54,6 +54,8 @@ export default {
 <style lang='scss' scoped>
 $itempx: calc(350px / 4);
 .componentList{
+  display: grid;
+  grid-template-columns: repeat(4);
   .group{
     .group-title{
       font-size: 16px;

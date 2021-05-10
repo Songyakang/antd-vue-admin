@@ -4,23 +4,14 @@
   </div>
 </template>
 <script>
-import { registerMicroApps, start } from "qiankun";
 export default {
   name: "app",
   data() {
     return {};
   },
   created() {
-    registerMicroApps([
-      {
-        name: "vue app", // app name registered
-        entry: "//localhost:8080",
-        container: "#vue",
-        activeRule: "/vue",
-      }
-    ]);
-    console.log(registerMicroApps);
-    start();
+    console.log()
+    this.$store.dispatch("router/setRouter", this.$router.options.routes)
   },
 };
 </script>

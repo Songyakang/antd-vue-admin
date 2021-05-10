@@ -3,12 +3,13 @@
     <div class="scroll-item" data-target='father'>
       <div v-for='(item, index) in list' :key='index' class="group">
         <div 
-          @click="$emit('changebind', index)" 
-          :class='item.will ? "opactiy":""' 
-          :data-target='index' 
-          @dragstart='oho(index)' 
-          draggable 
-          class="div">{{item.title}}</div>
+          @click="$emit('changebind', index)"
+          :class='item.will ? "opactiy":""'
+          :data-target='index'
+          @dragstart='oho(index)'
+          draggable
+          class="div"
+        >{{item.title}}</div>
       </div>
     </div>
   </div>
